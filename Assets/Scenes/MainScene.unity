@@ -4757,7 +4757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSphere: {fileID: 1416366768}
-  attackRange: 0.9
+  attackRange: 2
   playerAttackDamage: 1
   enemyLayer:
     serializedVersion: 2
@@ -5021,7 +5021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 2367331842692672810, guid: f1a5c38618e206f41825c38a5c036a4e, type: 3}
-  SpawnerInterval: 3
+  SpawnerInterval: 1
 --- !u!4 &1262216248
 Transform:
   m_ObjectHideFlags: 0
@@ -5433,7 +5433,7 @@ Transform:
   m_GameObject: {fileID: 1416366767}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.583, z: 0}
+  m_LocalPosition: {x: 0, y: 1.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
