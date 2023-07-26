@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 7482169998246130367}
   - component: {fileID: 5951868176429514939}
   - component: {fileID: 5722802993087398087}
-  m_Layer: 0
+  - component: {fileID: 6775680028062721636}
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,3 +188,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   maxDistanceFromPlayer: 25
+--- !u!114 &6775680028062721636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367331842692672810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5f611d95f3e974ba8f01a915db72e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1

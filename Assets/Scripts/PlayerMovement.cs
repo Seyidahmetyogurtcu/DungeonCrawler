@@ -12,24 +12,28 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed;
 
-    private Vector2 moveDirection;
 
+    private Vector2 moveDirection;
     void FixedUpdate()
     {
         Movement();
+        ProcessInputs();
+
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+
+        transform.up = direction;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        ProcessInputs();
-    }
+   
     private void ProcessInputs()
     {
         moveH = Input.GetAxisRaw("Horizontal");
         moveV = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector2(moveH, moveV).normalized;
-
     }
     private void Movement()
     {
