@@ -124,6 +124,11 @@ public class ResetManager : MonoBehaviour
         /* Reset Code we can write later
         ...
         */
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemyObject in enemyObjects)
+        {
+            Destroy(enemyObject);
+        }
 
         player.transform.position = spawnPos;
         Debug.Log("Scene Reset");
