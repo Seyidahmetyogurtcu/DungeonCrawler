@@ -14,7 +14,6 @@ public class AIChase : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         distance = Vector2.Distance(transform.position, player.transform.position);

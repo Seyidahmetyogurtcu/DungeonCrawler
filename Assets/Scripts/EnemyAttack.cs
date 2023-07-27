@@ -6,10 +6,6 @@ public class AttackScript : MonoBehaviour
 {
     public float damage;
 
-    void Start()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
