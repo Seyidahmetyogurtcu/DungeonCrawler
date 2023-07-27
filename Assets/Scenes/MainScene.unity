@@ -4808,6 +4808,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5486241685412853253, guid: eb808b512205dd248a3f8ab863f7f7a4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1770765471}
+    - targetCorrespondingSourceObject: {fileID: 5486241685412853253, guid: eb808b512205dd248a3f8ab863f7f7a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770765472}
   m_SourcePrefab: {fileID: 100100000, guid: eb808b512205dd248a3f8ab863f7f7a4, type: 3}
 --- !u!4 &923171708 stripped
 Transform:
@@ -5124,7 +5127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31f093979fd8624f89abd2b80212973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 1770765471}
   HealthBarTotal: {fileID: 1332485547}
   HealthBarCurrent: {fileID: 1422040018}
 --- !u!114 &1308067637
@@ -5725,6 +5728,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
+--- !u!114 &1770765472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770765466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054054f565f548246b5cfc2d2ad24a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSphere: {fileID: 1416366768}
+  attackRange: 1
+  playerAttackDamage: 10
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &2042987690
 GameObject:
   m_ObjectHideFlags: 0
