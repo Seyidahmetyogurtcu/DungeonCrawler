@@ -26,6 +26,10 @@ public class ShooterEnemy : MonoBehaviour
     void Update()
     {
         Movement();
+        Vector2 direction = player.transform.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
 
     }
     private void Movement()
