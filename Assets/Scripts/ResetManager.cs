@@ -12,6 +12,10 @@ public class ResetManager : MonoBehaviour
     // reset count
     public int resetCount = 0;
 
+    // reset event
+    public delegate void ResetEventHandler(int resetCount);
+    public static event ResetEventHandler OnReset;
+
     // # times 'q' is hit
     private int resetStage;
 
@@ -85,7 +89,6 @@ public class ResetManager : MonoBehaviour
             else
             {
                 ResetScene();
-                resetCount++;
                 resetStage = 0;
                 globalVolume.weight = 0f;
                 Time.timeScale = 1f;
@@ -108,7 +111,6 @@ public class ResetManager : MonoBehaviour
                 if (resetStage == 3)
                 {
                     ResetScene();
-                    resetCount++;
                     Time.timeScale = 1f;
                 }
                 Debug.Log("Reset Timed Out");
@@ -124,8 +126,15 @@ public class ResetManager : MonoBehaviour
         /* Reset Code we can write later
         ...
         */
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemyObject in enemyObjects)
+        {
+            Destroy(enemyObject);
+        }
 
         player.transform.position = spawnPos;
+        resetCount++;
+        OnReset?.Invoke(resetCount); // Invoke the event passing the resetCount.
         Debug.Log("Scene Reset");
     }
 }
