@@ -47,6 +47,15 @@ public class ProjecticleScript : MonoBehaviour
             other.GetComponent<PlayerHealth>().TakeDamage(damage);
 
         }
+        else if (other.CompareTag("Enemy") || other.CompareTag("Enemy Bullet") || other.CompareTag("Player Bullet"))
+        {
+
+        }
+        else
+        {
+            DestroyProjectile();
+        }
+
     }
 
     void DestroyProjectile()
