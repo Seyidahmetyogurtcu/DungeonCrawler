@@ -9,7 +9,7 @@ public class EnemyRoomManager : MonoBehaviour
 
     // Passive and Active state variables
     private enum RoomState { Passive, Active }
-    private RoomState currentState = RoomState.Passive;
+    [SerializeField] private RoomState currentState = RoomState.Passive;
 
     public GameObject[] enemies;
 
@@ -37,6 +37,7 @@ public class EnemyRoomManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            currentState = RoomState.Passive;
             virtualCam.SetActive(false);
 
         }
@@ -57,8 +58,13 @@ public class EnemyRoomManager : MonoBehaviour
             {
                 // If all enemies are defeated, disable the gates
                 gates.SetActive(false);
+
             }
 
+        }
+        else if(currentState == RoomState.Passive)
+        {
+            gates.SetActive(false);
         }
     }
 
@@ -81,23 +87,7 @@ public class EnemyRoomManager : MonoBehaviour
         }
     }
 
-    private void SwitchToPassiveState()
-    {
-        if (currentState == RoomState.Active)
-        {
-            foreach (GameObject enemy in enemies)
-            {
-                ShooterEnemy shooterEnemy = enemy.GetComponent<ShooterEnemy>();
-                if (shooterEnemy != null)
-                {
-                    shooterEnemy.enabled = false;
-                }
-            }
-            gates.SetActive(false);
 
-            currentState = RoomState.Passive;
-        }
-    }
 
     private bool AreEnemiesRemaining()
     {
