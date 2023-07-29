@@ -17,7 +17,7 @@ public class ShooterEnemy : MonoBehaviour
     private enum EnemyState { Wandering, Attacking }
     private EnemyState currentState;
 
-    public float maxRaycastDistance = 10f;
+    public float maxRaycastDistance = 20f;
     private LayerMask playerLayerMask;
 
     // Variables for wandering behavior
@@ -33,6 +33,7 @@ public class ShooterEnemy : MonoBehaviour
         shotTimer = timeBetweenShots; // Initialize the shotTimer to allow the first shot.
 
         currentState = EnemyState.Wandering;
+        wanderTarget = transform.position;
     }
 
     private void Update()
@@ -77,7 +78,7 @@ public class ShooterEnemy : MonoBehaviour
     private Vector2 GetRandomWanderTarget()
     {
         // Generate a random position within a certain radius around the current position
-        float wanderRadius = 5f; // You can adjust this to control the wandering area
+        float wanderRadius = 2f; // You can adjust this to control the wandering area
         Vector2 randomDirection = Random.insideUnitCircle.normalized * wanderRadius;
         return (Vector2)transform.position + randomDirection;
     }

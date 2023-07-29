@@ -182,7 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8788830050311430749}
   - component: {fileID: 5563718907616724735}
-  - component: {fileID: 489138477060544807}
+  - component: {fileID: 8469369281785850292}
   m_Layer: 0
   m_Name: Start Trigger
   m_TagString: Untagged
@@ -250,7 +250,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &489138477060544807
+--- !u!114 &8469369281785850292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,10 +259,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6941583490497834031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31e844f87a9519f44ac3180c6395bd60, type: 3}
+  m_Script: {fileID: 11500000, guid: cc393eed1d49c0b4382a20fb2494421c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCam: {fileID: 408851023245423473}
+  gates: {fileID: 0}
 --- !u!1 &7307180405396268437
 GameObject:
   m_ObjectHideFlags: 0
