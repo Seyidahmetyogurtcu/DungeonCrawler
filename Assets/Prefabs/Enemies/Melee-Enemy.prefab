@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5341031085127205201}
   m_Layer: 6
   m_Name: Melee-Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,6 +180,8 @@ MonoBehaviour:
   nearDistance: 2
   totalNumberOfShots: 1
   shot: {fileID: 5615315036656059368, guid: c9f014ef5b7ea2240bab62daddfd2041, type: 3}
+  maxRaycastDistance: 10
+  wanderDuration: 2
 --- !u!61 &1043550670522860515
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -29,15 +29,15 @@ public class ProjecticleScript : MonoBehaviour
     {
         selfTransform.position += direction * speed * Time.deltaTime;
 
-        
+
         StartCoroutine(bulletTime(timeOfBullet));
-        
+
     }
     private IEnumerator bulletTime(float time)
     {
         yield return new WaitForSeconds(time);
         DestroyProjectile();
-        
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -47,6 +47,15 @@ public class ProjecticleScript : MonoBehaviour
             other.GetComponent<PlayerHealth>().TakeDamage(damage);
 
         }
+        else if (other.CompareTag("Enemy") || other.CompareTag("Enemy Bullet") || other.CompareTag("Player Bullet"))
+        {
+
+        }
+        else
+        {
+            DestroyProjectile();
+        }
+
     }
 
     void DestroyProjectile()

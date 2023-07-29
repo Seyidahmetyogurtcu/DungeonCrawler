@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4096392988334813272}
   m_Layer: 6
   m_Name: Pistol-Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,6 +180,8 @@ MonoBehaviour:
   nearDistance: 6
   totalNumberOfShots: 3
   shot: {fileID: 4530453523065462220, guid: d47f15730d59b19448eccda8c717be66, type: 3}
+  maxRaycastDistance: 10
+  wanderDuration: 2
 --- !u!61 &3564211726528153454
 BoxCollider2D:
   m_ObjectHideFlags: 0
