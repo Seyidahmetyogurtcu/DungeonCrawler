@@ -200,8 +200,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 24, y: 20, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 23.23, y: 19.358334, z: 0.96791667}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1957794757296379266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -264,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCam: {fileID: 408851023245423473}
   gates: {fileID: 0}
+  currentState: 0
+  enemies: []
 --- !u!1 &7307180405396268437
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8d710a974d3e145afb6312e77c77f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 2367331842692672810, guid: f1a5c38618e206f41825c38a5c036a4e, type: 3}
+  EnemyPrefabs: []
+  EliteEnemyPrefabs: []
   SpawnerInterval: 0
 --- !u!1 &8293520191434152801
 GameObject:
