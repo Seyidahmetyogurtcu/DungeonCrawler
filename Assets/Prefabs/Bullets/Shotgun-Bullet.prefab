@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d94c9685ad684d43a7bb5d56ffd78d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 5
   damage: 3
   timeOfBullet: 8
-  inaccuracyMultiplier: 30
+  inaccuracyMultiplier: 10
 --- !u!58 &1664680727677377737
 CircleCollider2D:
   m_ObjectHideFlags: 0

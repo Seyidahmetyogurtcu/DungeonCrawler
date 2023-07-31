@@ -183,7 +183,7 @@ MonoBehaviour:
   reloadSpeed: 8
   reloadingTimer: 0
   maxRaycastDistance: 20
-  additionalRotationAngle: 0
+  additionalRotationAngle: 30
   wanderDuration: 2
 --- !u!61 &5055217829044362484
 BoxCollider2D:
