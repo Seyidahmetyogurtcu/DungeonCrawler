@@ -101,6 +101,7 @@ MonoBehaviour:
   speed: 2
   damage: 3
   timeOfBullet: 8
+  inaccuracyMultiplier: 30
 --- !u!58 &1664680727677377737
 CircleCollider2D:
   m_ObjectHideFlags: 0

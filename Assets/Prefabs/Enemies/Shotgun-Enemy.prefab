@@ -173,15 +173,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf64826326dacdd4dbfcac9c9f243aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  reloadSpeed: 2
-  timeBetweenShots: 0.1
-  stoppingDistance: 7
-  nearDistance: 8
+  speed: 5
+  stoppingDistance: 8
+  nearDistance: 7
+  timeBetweenShots: 0.5
   totalNumberOfShots: 8
-  numberOfShots: 0
-  reloadingTimer: 0
+  bulletsPerShot: 7
   shot: {fileID: 2012413885006598266, guid: fd45f081375270b4094f4093d9a6bf56, type: 3}
+  reloadSpeed: 2
+  reloadingTimer: 0
   maxRaycastDistance: 10
   additionalRotationAngle: 0
   wanderDuration: 2

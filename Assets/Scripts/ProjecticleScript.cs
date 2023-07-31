@@ -7,6 +7,7 @@ public class ProjecticleScript : MonoBehaviour
     public float speed;
     public float damage;
     public float timeOfBullet;
+    public float inaccuracyMultiplier;
 
     private Transform player;
     private Transform selfTransform;
@@ -24,6 +25,7 @@ public class ProjecticleScript : MonoBehaviour
         selfTransform = GetComponent<Transform>();
         playerPosition = player.position;
         direction = (playerPosition - selfTransform.position).normalized;
+        direction = Quaternion.Euler(0f, 0f, Random.Range(-inaccuracyMultiplier, inaccuracyMultiplier)) * direction;
     }
     void Update()
     {

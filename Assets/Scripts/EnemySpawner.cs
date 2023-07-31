@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject EnemyPrefab;
+    [SerializeField] private GameObject[] EnemyPrefabs;
+
+    [SerializeField] private GameObject[] EliteEnemyPrefabs;
 
     [SerializeField] public float SpawnerInterval;
 
@@ -40,7 +42,17 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             Vector3 spawnPosition = new Vector3(parentPosition.x + Random.Range(-15f, 15f), parentPosition.y + Random.Range(-15f, 15f), 0);
-            Instantiate(EnemyPrefab, spawnPosition, Quaternion.identity);
+            bool eliteChance = Mathf.Min(resetCount, 35) >= Random.Range(1, 41);
+            Debug.Log(eliteChance);
+            if(eliteChance)
+            {
+                
+                Instantiate(EliteEnemyPrefabs[Random.Range(0,EliteEnemyPrefabs.Length)], spawnPosition, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Length)], spawnPosition, Quaternion.identity);
+            }
         }
     }
     /*

@@ -2,22 +2,29 @@ using UnityEngine;
 
 public class ShooterEnemy : MonoBehaviour
 {
+    // Movement Variables
     public float speed;
-    public float reloadSpeed;
-    public float timeBetweenShots;
     public float stoppingDistance;
     public float nearDistance;
+
+    // Shooting Variables
+    public float timeBetweenShots;
     public float totalNumberOfShots;
-    public float numberOfShots;
+    private float numberOfShots;
     private float shotTimer; // Time interval between shots
-    public float reloadingTimer = 0f;
+    public int bulletsPerShot;
+
 
     public GameObject shot;
     private Transform player;
 
+    // Enemy States and Timers
     private enum EnemyState { Wandering, Attacking, Reloading }
     private EnemyState currentState;
+    public float reloadSpeed;
+    public float reloadingTimer = 0f;
 
+    // Raycasting and Targeting
     public float maxRaycastDistance = 20f;
     public float additionalRotationAngle = 0f;
     private LayerMask playerLayerMask;
@@ -137,19 +144,29 @@ public class ShooterEnemy : MonoBehaviour
 
     private void Shoot()
     {
-        if (numberOfShots > 0)
+        if ((numberOfShots >= totalNumberOfShots && Vector2.Distance(transform.position, player.position) <= stoppingDistance) || (numberOfShots > 0 && numberOfShots < totalNumberOfShots))
         {
             numberOfShots -= 1;
             Vector2 directionToPlayer = player.position - transform.position;
             float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
 
             angle += additionalRotationAngle;
-            // Instantiate the projectile with the calculated rotation
-            GameObject newShot = Instantiate(shot, transform.position, Quaternion.Euler(0f, 0f, angle));
+            GameObject newShot;
+            for(int i = 0; i<bulletsPerShot; i++)
+            {
+                Debug.Log("I shot");
+                newShot = Instantiate(shot, transform.position, Quaternion.Euler(0f, 0f, angle));
+            }
+            //Debug.Log("I shot");
+            // GameObject newShot = Instantiate(shot, transform.position, Quaternion.Euler(0f, 0f, angle));
+        }
+        else if (numberOfShots > 0)
+        {
+       
         }
         else
         {
-           Reload();
+            Reload();
         }
     }
     private void Reloading()
