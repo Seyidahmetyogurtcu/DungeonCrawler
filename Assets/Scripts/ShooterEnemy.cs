@@ -154,7 +154,6 @@ public class ShooterEnemy : MonoBehaviour
             GameObject newShot;
             for(int i = 0; i<bulletsPerShot; i++)
             {
-                Debug.Log("I shot");
                 newShot = Instantiate(shot, transform.position, Quaternion.Euler(0f, 0f, angle));
             }
             //Debug.Log("I shot");
@@ -185,7 +184,6 @@ public class ShooterEnemy : MonoBehaviour
     }
     private void Reload()
     {
-        Debug.Log("made it in");
         currentState = EnemyState.Reloading;
        
     }

@@ -8,17 +8,17 @@ public class EnemyRoomManager : MonoBehaviour
     public GameObject gates;
 
     // Passive and Active state variables
-    private enum RoomState { Passive, Active, Clear}
+    private enum RoomState { Passive, Active, Clear }
     [SerializeField] private RoomState currentState = RoomState.Passive;
 
-    public GameObject[] enemies;
+    private List<GameObject> enemies = new List<GameObject>(); // Use a List to store the enemies within the room
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            //find all enemies objects
-            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            // Find all enemies objects within the room
+            enemies = FindEnemiesWithinRoom();
 
             virtualCam.SetActive(true);
 
@@ -27,8 +27,6 @@ public class EnemyRoomManager : MonoBehaviour
                 gates.SetActive(true);
                 SwitchToActiveState();
             }
-
-            
         }
     }
 
@@ -38,32 +36,37 @@ public class EnemyRoomManager : MonoBehaviour
         {
             currentState = RoomState.Passive;
             virtualCam.SetActive(false);
-
         }
     }
 
-    private void FixedUpdate()
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if(currentState == RoomState.Active)
+        if (other.CompareTag("Player"))
         {
-            enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            // Check if there are any enemies remaining in the room
-            if (AreEnemiesRemaining())
+            if (currentState == RoomState.Active)
             {
-                // If there are enemies remaining, keep the gates active
-                gates.SetActive(true);
+                // Find all enemies objects within the room
+                enemies = FindEnemiesWithinRoom();
+
+                // Check if there are any enemies remaining in the room
+                if (AreEnemiesRemaining())
+                {
+                    // If there are enemies remaining, keep the gates active
+                    gates.SetActive(true);
+                }
+                else
+                {
+                    // If all enemies are defeated, disable the gates
+                    gates.SetActive(false);
+                    currentState = RoomState.Clear;
+                    Debug.Log("Hello");
+                }
             }
             else
             {
-                // If all enemies are defeated, disable the gates
+                Debug.Log("Goodbye");
                 gates.SetActive(false);
-                currentState = RoomState.Clear;
             }
-
-        }
-        else
-        {
-            gates.SetActive(false);
         }
     }
 
@@ -72,7 +75,6 @@ public class EnemyRoomManager : MonoBehaviour
         if (currentState == RoomState.Passive)
         {
             // Enable ShooterEnemy scripts for all objects with tag "Enemy"
-            enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
                 ShooterEnemy shooterEnemy = enemy.GetComponent<ShooterEnemy>();
@@ -86,10 +88,32 @@ public class EnemyRoomManager : MonoBehaviour
         }
     }
 
+    private List<GameObject> FindEnemiesWithinRoom()
+    {
+        List<GameObject> enemiesWithinRoom = new List<GameObject>();
 
+        // Assuming there's a collider2D for the room, get its bounds
+        Collider2D roomCollider = GetComponent<Collider2D>();
+        if (roomCollider != null)
+        {
+            // Get all colliders within the room's bounds
+            Collider2D[] colliders = Physics2D.OverlapBoxAll(roomCollider.bounds.center, roomCollider.bounds.size, 0f);
+
+            // Check each collider if it has the tag "Enemy" and add to the list if true
+            foreach (var collider in colliders)
+            {
+                if (collider.CompareTag("Enemy"))
+                {
+                    enemiesWithinRoom.Add(collider.gameObject);
+                }
+            }
+        }
+
+        return enemiesWithinRoom;
+    }
 
     private bool AreEnemiesRemaining()
     {
-        return enemies.Length > 0;
+        return enemies.Count > 0;
     }
 }
