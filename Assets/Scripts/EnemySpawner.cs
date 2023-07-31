@@ -41,13 +41,35 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Vector3 spawnPosition = new Vector3(parentPosition.x + Random.Range(-15f, 15f), parentPosition.y + Random.Range(-15f, 15f), 0);
+            Vector3 spawnPosition = Vector3.zero;
             bool eliteChance = Mathf.Min(resetCount, 35) >= Random.Range(1, 41);
-            Debug.Log(eliteChance);
-            if(eliteChance)
+
+            while (true)
             {
-                
-                Instantiate(EliteEnemyPrefabs[Random.Range(0,EliteEnemyPrefabs.Length)], spawnPosition, Quaternion.identity);
+                spawnPosition = new Vector3(parentPosition.x + Random.Range(-15f, 15f), parentPosition.y + Random.Range(-15f, 15f), 0);
+
+                // Check if there are any colliders within a radius of 1 around the spawn position
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPosition, 1f);
+                bool isValidSpawnPosition = true;
+
+                foreach (Collider2D collider in colliders)
+                {
+                        isValidSpawnPosition = false;
+                        break;
+                   
+                }
+
+                // If the spawn position is valid, break the loop
+                if (isValidSpawnPosition)
+                {
+                    break;
+                }
+            }
+
+            Debug.Log(eliteChance);
+            if (eliteChance)
+            {
+                Instantiate(EliteEnemyPrefabs[Random.Range(0, EliteEnemyPrefabs.Length)], spawnPosition, Quaternion.identity);
             }
             else
             {
@@ -55,6 +77,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
     }
+
     /*
    void Start()
    {
