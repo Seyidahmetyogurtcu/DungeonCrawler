@@ -177,7 +177,7 @@ MonoBehaviour:
   stoppingDistance: 8
   nearDistance: 7
   timeBetweenShots: 0.5
-  totalNumberOfShots: 8
+  totalNumberOfShots: 1
   bulletsPerShot: 7
   shot: {fileID: 2012413885006598266, guid: fd45f081375270b4094f4093d9a6bf56, type: 3}
   reloadSpeed: 2
