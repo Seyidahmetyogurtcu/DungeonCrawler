@@ -8,16 +8,18 @@ public class ShooterEnemy : MonoBehaviour
     public float stoppingDistance;
     public float nearDistance;
     public float totalNumberOfShots;
-    private float numberOfShots;
+    public float numberOfShots;
     private float shotTimer; // Time interval between shots
+    public float reloadingTimer = 0f;
 
     public GameObject shot;
     private Transform player;
 
-    private enum EnemyState { Wandering, Attacking }
+    private enum EnemyState { Wandering, Attacking, Reloading }
     private EnemyState currentState;
 
     public float maxRaycastDistance = 20f;
+    public float additionalRotationAngle = 0f;
     private LayerMask playerLayerMask;
 
     // Variables for wandering behavior
@@ -45,6 +47,9 @@ public class ShooterEnemy : MonoBehaviour
     {
         switch (currentState)
         {
+            case EnemyState.Reloading:
+                Reloading();
+                break;
             case EnemyState.Wandering:
                 Wander();
                 CheckPlayerVisibility();
@@ -52,10 +57,15 @@ public class ShooterEnemy : MonoBehaviour
 
             case EnemyState.Attacking:
                 Attack();
+                if (currentState == EnemyState.Reloading)
+                {
+                    break;
+                }
                 CheckPlayerVisibility();
                 break;
         }
     }
+
 
     private void Wander()
     {
@@ -130,17 +140,36 @@ public class ShooterEnemy : MonoBehaviour
         if (numberOfShots > 0)
         {
             numberOfShots -= 1;
-            Instantiate(shot, transform.position, Quaternion.identity);
+            Vector2 directionToPlayer = player.position - transform.position;
+            float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+
+            angle += additionalRotationAngle;
+            // Instantiate the projectile with the calculated rotation
+            GameObject newShot = Instantiate(shot, transform.position, Quaternion.Euler(0f, 0f, angle));
         }
         else
         {
-            Reload();
+           Reload();
         }
     }
-
+    private void Reloading()
+    {
+        Wander();
+        // During reloading, wait for the reloadingDuration to elapse
+        reloadingTimer += Time.deltaTime;
+        if (reloadingTimer >= reloadSpeed)
+        {
+            // After reloading, return to the wandering state
+            numberOfShots = totalNumberOfShots;
+            shotTimer = timeBetweenShots; // Reset the shotTimer after reloading
+            currentState = EnemyState.Wandering;
+            reloadingTimer = 0f;
+        }
+    }
     private void Reload()
     {
-        numberOfShots = totalNumberOfShots;
-        shotTimer = timeBetweenShots; // Reset the shotTimer after reloading
+        Debug.Log("made it in");
+        currentState = EnemyState.Reloading;
+       
     }
 }

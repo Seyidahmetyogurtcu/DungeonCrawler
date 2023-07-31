@@ -115,7 +115,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &8217677786979843224
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,8 +179,11 @@ MonoBehaviour:
   stoppingDistance: 7
   nearDistance: 8
   totalNumberOfShots: 8
+  numberOfShots: 0
+  reloadingTimer: 0
   shot: {fileID: 2012413885006598266, guid: fd45f081375270b4094f4093d9a6bf56, type: 3}
-  maxRaycastDistance: 2
+  maxRaycastDistance: 10
+  additionalRotationAngle: 0
   wanderDuration: 2
 --- !u!61 &8651790107200345900
 BoxCollider2D:
