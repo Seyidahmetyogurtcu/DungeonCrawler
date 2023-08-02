@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour
     public float reloadSpeed;
     public float reloadTimer = 0f;
 
-    private float currentBulletCount;
+    public float currentBulletCount;
     
 
     public LayerMask enemyLayer;

@@ -13,7 +13,6 @@ public class PlayerProjectileScript : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.velocity = speed * transform.up;
         StartCoroutine(bulletTime(timeOfBullet));
-
     }
     
     private IEnumerator bulletTime(float time)
