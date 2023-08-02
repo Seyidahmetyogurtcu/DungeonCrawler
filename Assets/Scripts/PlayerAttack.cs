@@ -8,15 +8,80 @@ public class PlayerAttack : MonoBehaviour
 
     public float attackRange;
     public float playerAttackDamage;
+    public float bulletCount;
+    public float reloadSpeed;
+    public float reloadTimer = 0f;
+
+    private float currentBulletCount;
+    
 
     public LayerMask enemyLayer;
 
+    public GameObject shot;
 
-    void Update()
+    private bool isMelee = false;
+    private bool isReloading = false;
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        currentBulletCount = bulletCount;
+    }
+    private void Update()
+    {
+        Inputs();
+        Reload();
+    }
+    private void Inputs()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (isMelee) 
+                {
+                    isMelee = false;
+                }
+                else
+                {
+                    isMelee = true;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (isMelee)
+                {
+                    Attack();
+                }
+                else
+                {
+                    Shoot();
+                }
+            
+            }
+    }
+    private void Shoot()
+    {
+        if (currentBulletCount > 0)
         {
-            Attack();
+            Instantiate(shot, transform.position, transform.rotation);
+            currentBulletCount--;
+
+        }
+        else
+        {
+           isReloading = true;
+        }
+    }
+    private void Reload()
+    {
+        if (isReloading)
+        {
+            reloadTimer += Time.deltaTime;
+            if (reloadTimer >= reloadSpeed)
+            {
+                currentBulletCount = bulletCount;
+                reloadTimer = 0f;
+                isReloading= false;
+            }
         }
     }
     public void Attack()

@@ -5484,6 +5484,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2207091082695231903, guid: 306595922b45d0740b00f5d46a37f2bb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4846547121729883332, guid: 306595922b45d0740b00f5d46a37f2bb, type: 3}
       propertyPath: m_Name
       value: ShooterEnemy
@@ -5592,7 +5596,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4098699724563289788, guid: 2c9adece063fd774d8d4b5d55d88b3d6, type: 3}
       propertyPath: maxHealth
-      value: 5
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546714646107977799, guid: 2c9adece063fd774d8d4b5d55d88b3d6, type: 3}
+      propertyPath: shot
+      value: 
+      objectReference: {fileID: 4395418117079092272, guid: 28b70dec05820104aa7fe557ab06fc28, type: 3}
+    - target: {fileID: 4546714646107977799, guid: 2c9adece063fd774d8d4b5d55d88b3d6, type: 3}
+      propertyPath: shootSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546714646107977799, guid: 2c9adece063fd774d8d4b5d55d88b3d6, type: 3}
+      propertyPath: bulletCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546714646107977799, guid: 2c9adece063fd774d8d4b5d55d88b3d6, type: 3}
+      propertyPath: reloadSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546714646107977799, guid: 2c9adece063fd774d8d4b5d55d88b3d6, type: 3}
+      propertyPath: timeBetweenBullets
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
