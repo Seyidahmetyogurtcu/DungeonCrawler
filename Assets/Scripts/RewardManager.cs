@@ -5,9 +5,13 @@ public class RewardManager : MonoBehaviour
     public GameObject[] Rewards;
     private GameObject[] enemies;
     private int rewardNum;
-    public int maxRewardNum;
+    private int maxRewardNum;
     private bool gaveRewardFlag;
 
+    private void Start()
+    {
+        maxRewardNum = Rewards.Length;
+    }
     private void OnEnable()
     {
         ResetManager.OnReset += HandleReset;
