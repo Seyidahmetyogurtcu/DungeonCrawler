@@ -10,7 +10,7 @@ public class HealthPowerUp : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerHealth>().maxHealth += UpgradeAmount;
-            other.GetComponent<PlayerHealth>().currentHealth += UpgradeAmount;
+            other.GetComponent<PlayerHealth>().currentHealth = other.GetComponent<PlayerHealth>().maxHealth;
             Destroy(gameObject);
 
         }

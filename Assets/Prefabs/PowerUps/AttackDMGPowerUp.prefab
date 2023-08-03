@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6174c3e4237a20d4984922c70fed987d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradeAmount: 1
+  UpgradeAmount: 2
 --- !u!61 &4465544293083637954
 BoxCollider2D:
   m_ObjectHideFlags: 0

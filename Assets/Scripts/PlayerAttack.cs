@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public float playerAttackDamage;
     public float bulletCount;
     public float reloadSpeed;
-    public float reloadTimer = 0f;
+    private float reloadTimer = 0f;
 
     public float currentBulletCount;
     
@@ -33,30 +33,35 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Inputs()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (isMelee)
             {
-                if (isMelee) 
-                {
-                    isMelee = false;
-                }
-                else
-                {
-                    isMelee = true;
-                }
+                isMelee = false;
+            }
+            else
+            {
+                isMelee = true;
+            }
+        }
+
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (isMelee)
+            {
+                Attack();
+            }
+            else
+            {
+                Shoot();
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (isMelee)
-                {
-                    Attack();
-                }
-                else
-                {
-                    Shoot();
-                }
-            
-            }
+        }
+        if (currentBulletCount <= 0)
+        {
+            isReloading = true;
+        }
     }
     private void Shoot()
     {
@@ -64,11 +69,6 @@ public class PlayerAttack : MonoBehaviour
         {
             Instantiate(shot, transform.position, transform.rotation);
             currentBulletCount--;
-
-        }
-        else
-        {
-           isReloading = true;
         }
     }
     private void Reload()

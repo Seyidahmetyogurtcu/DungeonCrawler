@@ -2,6 +2,7 @@
 
 public class RewardManager : MonoBehaviour
 {
+    public GameObject HealthUpgrade;
     public GameObject[] Rewards;
     private GameObject[] enemies;
     private int rewardNum;
@@ -36,7 +37,8 @@ public class RewardManager : MonoBehaviour
         {
             if (enemies.Length == 0 && !gaveRewardFlag)
             {
-                Instantiate(Rewards[rewardNum], new Vector3(0, 0, 0), Quaternion.identity);
+                Instantiate(HealthUpgrade, new Vector3(0, 0, 0), Quaternion.identity);
+                Instantiate(Rewards[rewardNum], new Vector3(0, 3, 0), Quaternion.identity);
                 gaveRewardFlag = true;
             }
         }
